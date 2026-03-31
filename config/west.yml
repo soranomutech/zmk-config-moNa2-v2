@@ -10,8 +10,8 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: zettaface  # <-- Input Processor Keybind
       url-base: https://github.com/zettaface
-    - name: nuovotaka  # <-- Pointing Acceleration (multi-level)
-      url-base: https://github.com/nuovotaka
+    - name: soranomutech  # <-- 3-Stage Pointing Acceleration
+      url-base: https://github.com/soranomutech
   projects:
     - name: zmk
       remote: cormoran
@@ -41,8 +41,8 @@ manifest:
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
       revision: main
-    - name: zmk-pointing-acceleration-alpha
-      remote: nuovotaka
+    - name: zmk-input-processor-3stage
+      remote: soranomutech
       revision: main
   self:
     path: config
