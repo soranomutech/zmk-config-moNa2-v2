@@ -1,7 +1,7 @@
 #include "mona2.dtsi"
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <behaviors/input_gestures_accel.dtsi>
+#include <behaviors/input_processor_3stage.dtsi>
 
 
 &default_transform {
@@ -63,36 +63,39 @@
     };
 };
 
-// Pointer acceleration config (Level 2 Standard, custom)
-&pointer_accel {
+// 3-stage pointer acceleration config
+// Zone 1 (0-1200 cps): deceleration 0.56x → 1.0x (precision)
+// Zone 2 (1200-1800 cps): flat at 1.0x (normal)
+// Zone 3 (1800-6000 cps): acceleration 1.0x → 3.0x (fast travel)
+&pointer_accel_3s {
+    status = "okay";
     input-type = <INPUT_EV_REL>;
-    codes = <INPUT_REL_X INPUT_REL_Y>;
-    sensitivity = <1000>;         // 1.0x base sensitivity
-    min-factor = <560>;           // 0.56x at slow speeds (~450 CPI)
+    min-factor = <560>;           // 0.56x at very slow speeds (~450 CPI)
+    mid-factor = <1000>;          // 1.0x in flat zone (800 CPI)
     max-factor = <3000>;          // 3.0x at fast speeds (~2400 CPI)
-    speed-threshold = <1200>;     // acceleration starts here
-    speed-max = <6000>;           // max acceleration reached here
-    acceleration-exponent = <2>;  // mild exponential curve
-    y-boost = <1000>;             // 1.0x (no Y-axis boost)
-    sensor-dpi = <800>;           // match CPI setting
+    speed-low = <1200>;           // decel → flat boundary
+    speed-high = <1800>;          // flat → accel boundary
+    speed-max = <6000>;           // max-factor reached here
+    deceleration-exponent = <1>;  // linear deceleration curve
+    acceleration-exponent = <2>;  // quadratic acceleration curve
+    track-remainders;
 };
 
-// Scroll acceleration config (gentle linear curve)
+// Scroll acceleration config (gentle linear curve, 2-stage mode)
 / {
     scroll_accel: scroll_accel {
-        compatible = "zmk,input-processor-acceleration";
+        compatible = "zmk,input-processor-3stage";
         status = "okay";
         #input-processor-cells = <0>;
         input-type = <INPUT_EV_REL>;
-        codes = <INPUT_REL_X INPUT_REL_Y>;
-        sensitivity = <1000>;         // 1.0x base
         min-factor = <900>;           // 0.9x at slow speeds
+        mid-factor = <900>;           // 0.9x (no decel zone since speed-low=0)
         max-factor = <1500>;          // 1.5x at fast speeds
-        speed-threshold = <1000>;     // acceleration starts here
-        speed-max = <4000>;           // max acceleration reached here
+        speed-low = <0>;              // no deceleration zone
+        speed-high = <1000>;          // accel starts here
+        speed-max = <4000>;           // max accel reached here
+        deceleration-exponent = <1>;
         acceleration-exponent = <1>;  // linear curve (gentle)
-        y-boost = <1000>;             // 1.0x (no boost)
-        sensor-dpi = <800>;
     };
 };
 
@@ -100,7 +103,7 @@
 &trackball_central_listener {
     status = "okay";
     device = <&trackball_central>;
-    input-processors = <&pointer_accel>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&mouse_runtime_input_processor>, <&zip_temp_layer 5 500>;
+    input-processors = <&pointer_accel_3s>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&mouse_runtime_input_processor>, <&zip_temp_layer 5 500>;
 
     scroller {
         layers = <3>;
