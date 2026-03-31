@@ -1,6 +1,7 @@
 #include "mona2.dtsi"
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <behaviors/input_gestures_accel.dtsi>
 
 
 &default_transform {
@@ -62,12 +63,22 @@
     };
 };
 
+// Pointer acceleration config (quadratic curve)
+&pointer_accel {
+    input-type = <INPUT_EV_REL>;
+    min-factor = <800>;           // 0.8x at slow speeds (precision)
+    max-factor = <3000>;          // 3.0x at fast speeds
+    speed-threshold = <1200>;     // acceleration starts here
+    speed-max = <6000>;           // max acceleration reached here
+    acceleration-exponent = <2>;  // quadratic curve
+    track-remainders;
+};
 
 // Overrides for the input listener node
 &trackball_central_listener {
     status = "okay";
     device = <&trackball_central>;
-    input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&mouse_runtime_input_processor>, <&zip_temp_layer 5 500>;
+    input-processors = <&pointer_accel>, <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>, <&mouse_runtime_input_processor>, <&zip_temp_layer 5 500>;
 
     scroller {
         layers = <3>;
