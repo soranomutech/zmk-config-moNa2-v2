@@ -10,6 +10,8 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: zettaface  # <-- Input Processor Keybind
       url-base: https://github.com/zettaface
+    - name: oleksandrmaslov  # <-- Pointing Acceleration
+      url-base: https://github.com/oleksandrmaslov
   projects:
     - name: zmk
       remote: cormoran
@@ -38,6 +40,9 @@ manifest:
       revision: main
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
+      revision: main
+    - name: zmk-pointing-acceleration
+      remote: oleksandrmaslov
       revision: main
   self:
     path: config
