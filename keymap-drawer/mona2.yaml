@@ -27,7 +27,7 @@ layers:
   - C
   - V
   - B
-  - ESC
+  - ''
   - '-'
   - N
   - M
@@ -108,12 +108,12 @@ layers:
   - '{'
   - '}'
   - ''''
-  - '0'
+  - {t: '0', h: LEFT SHIFT}
   - '1'
   - '2'
   - '3'
   - '%'
-  - {t: ▽, type: trans}
+  - ESC
   - '@'
   - '*'
   - /
@@ -150,7 +150,7 @@ layers:
   - Ctl+Sft+TAB
   - Ctl+TAB
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - LEFT ALT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -170,7 +170,7 @@ layers:
   - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
-  - DELETE
+  - TAB
   - {t: ▽, type: trans}
   '4':
   - {t: ▽, type: trans}
