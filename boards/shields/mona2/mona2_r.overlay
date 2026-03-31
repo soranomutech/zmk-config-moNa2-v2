@@ -64,13 +64,13 @@
 };
 
 // 3-stage pointer acceleration config
-// Zone 1 (0-1200 cps): deceleration 0.56x → 1.0x (precision)
+// Zone 1 (0-1200 cps): deceleration 0.5x → 1.0x (precision)
 // Zone 2 (1200-1800 cps): flat at 1.0x (normal)
 // Zone 3 (1800-6000 cps): acceleration 1.0x → 3.0x (fast travel)
 &pointer_accel_3s {
     status = "okay";
     input-type = <INPUT_EV_REL>;
-    min-factor = <560>;           // 0.56x at very slow speeds (~450 CPI)
+    min-factor = <500>;           // 0.5x at very slow speeds (400 CPI)
     mid-factor = <1000>;          // 1.0x in flat zone (800 CPI)
     max-factor = <3000>;          // 3.0x at fast speeds (~2400 CPI)
     speed-low = <1200>;           // decel → flat boundary
