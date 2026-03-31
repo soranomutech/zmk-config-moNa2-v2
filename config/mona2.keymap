@@ -122,7 +122,7 @@
 &mt LEFT_SHIFT TILDE &kp N0  &trans  &trans  &trans      &trans         &trans               &trans                                       &kp CARET
             >;
 
-            sensor-bindings = <&scroll_up_down>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         layer_3 {
@@ -133,7 +133,7 @@
 &trans  &trans  &trans          &trans           &trans       &trans             &trans                        &kp TAB                                                          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp LC(LS(TAB)) LC(TAB)>;
         };
 
         layer_4 {
