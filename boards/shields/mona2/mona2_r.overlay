@@ -53,7 +53,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; //P0.02を指定(MOTION)
-        cpi = <600>;
+        cpi = <800>;
         //swap-xy;
         invert-x; //COROPIT版ではコメントアウトを外す
         invert-y; //COROPIT版ではコメントアウトを外す
@@ -63,14 +63,14 @@
     };
 };
 
-// Pointer acceleration config (quadratic curve for mouse)
+// Pointer acceleration config (linear curve for mouse)
 &pointer_accel {
     input-type = <INPUT_EV_REL>;
-    min-factor = <800>;           // 0.8x at slow speeds (precision)
-    max-factor = <3000>;          // 3.0x at fast speeds
+    min-factor = <560>;           // 0.56x at slow speeds (~450 CPI)
+    max-factor = <3000>;          // 3.0x at fast speeds (~2400 CPI)
     speed-threshold = <1200>;     // acceleration starts here
     speed-max = <6000>;           // max acceleration reached here
-    acceleration-exponent = <2>;  // quadratic curve
+    acceleration-exponent = <1>;  // linear curve
     track-remainders;
 };
 
