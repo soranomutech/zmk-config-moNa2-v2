@@ -84,12 +84,15 @@
         status = "okay";
         #input-processor-cells = <0>;
         input-type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_X INPUT_REL_Y>;
+        sensitivity = <1000>;         // 1.0x base
         min-factor = <900>;           // 0.9x at slow speeds
         max-factor = <1500>;          // 1.5x at fast speeds
         speed-threshold = <1000>;     // acceleration starts here
         speed-max = <4000>;           // max acceleration reached here
         acceleration-exponent = <1>;  // linear curve (gentle)
-        track-remainders;
+        y-boost = <1000>;             // 1.0x (no boost)
+        sensor-dpi = <800>;
     };
 };
 
