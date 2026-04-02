@@ -43,7 +43,7 @@
 
         layer7_hold {
             bindings = <&mo 7>;
-            key-positions = <19 20>;
+            key-positions = <18 19>;
         };
     };
 
@@ -177,9 +177,9 @@
         layer_7 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                                    &trans          &trans         &trans         &trans       &trans
-&trans  &trans  &trans  &trans  &trans                    &trans          &trans          &kp TAB        &kp LEFT_ALT   &trans       &trans
+&trans  &trans  &trans  &trans  &trans                    &trans          &trans          &kp LEFT_ALT   &trans         &trans       &kp LEFT_SHIFT
 &trans  &trans  &trans  &trans  &trans     &trans         &trans          &trans          &trans         &trans         &trans       &trans
-&trans  &trans  &trans  &trans  &trans     &trans         &trans          &kp LEFT_SHIFT                                            &trans
+&trans  &trans  &trans  &trans  &trans     &trans         &trans          &kp TAB                                                   &trans
             >;
 
             sensor-bindings = <&scroll_up_down>;
