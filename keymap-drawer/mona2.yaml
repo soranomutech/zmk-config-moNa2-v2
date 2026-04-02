@@ -321,8 +321,8 @@ layers:
   - {t: ▽, type: trans}
   - TAB
   - LEFT ALT
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -350,4 +350,4 @@ combos:
 - p: [11, 12]
   k: TAB
 - p: [19, 20]
-  k: {t: '7', h: toggle}
+  k: '7'
