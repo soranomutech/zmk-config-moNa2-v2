@@ -88,11 +88,11 @@
         status = "okay";
         #input-processor-cells = <0>;
         input-type = <INPUT_EV_REL>;
-        min-factor = <1500>;          // 1.5x at slow speeds
-        mid-factor = <3000>;          // 3.0x in flat zone
-        max-factor = <4000>;          // 4.0x at fast speeds
-        speed-low = <800>;            // decel -> flat boundary
-        speed-high = <1500>;          // flat -> accel boundary
+        min-factor = <500>;           // 0.5x at slow speeds
+        mid-factor = <1500>;          // 1.5x in flat zone
+        max-factor = <3000>;          // 3.0x at fast speeds
+        speed-low = <1000>;           // decel -> flat boundary
+        speed-high = <2000>;          // flat -> accel boundary
         speed-max = <4000>;           // max accel reached here
         deceleration-exponent = <1>;
         acceleration-exponent = <1>;  // linear curve (gentle)
