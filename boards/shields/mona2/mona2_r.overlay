@@ -88,8 +88,8 @@
         status = "okay";
         #input-processor-cells = <0>;
         input-type = <INPUT_EV_REL>;
-        min-factor = <900>;           // 0.9x at slow speeds
-        mid-factor = <900>;           // 0.9x (no decel zone since speed-low=0)
+        min-factor = <500>;           // 0.5x at slow speeds
+        mid-factor = <500>;           // 0.5x (no decel zone since speed-low=0)
         max-factor = <1500>;          // 1.5x at fast speeds
         speed-low = <0>;              // no deceleration zone
         speed-high = <1000>;          // accel starts here
