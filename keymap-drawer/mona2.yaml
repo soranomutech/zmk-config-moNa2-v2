@@ -44,17 +44,17 @@ layers:
   - {t: ENTER, h: '2'}
   - {t: LEFT ALT, h: '3'}
   '1':
-  - TAB
+  - {t: ▽, type: trans}
   - F7
   - F8
   - F9
   - F12
   - PG UP
   - HOME
-  - END
+  - End
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - TAB
   - F4
   - F5
   - F6
@@ -130,7 +130,7 @@ layers:
   - {type: held}
   - ^
   '3':
-  - TAB
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -140,7 +140,7 @@ layers:
   - Ctl+W
   - Ctl+Sft+T
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - TAB
   - {t: ▽, type: trans}
   - Alt+LEFT
   - Alt+RIGHT
