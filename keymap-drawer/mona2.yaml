@@ -44,7 +44,7 @@ layers:
   - {t: ENTER, h: '2'}
   - {t: LEFT ALT, h: '3'}
   '1':
-  - {t: ▽, type: trans}
+  - ESC
   - F7
   - F8
   - F9
@@ -65,7 +65,7 @@ layers:
   - UP
   - '&mkp MB2'
   - {t: '&mkp MB3', type: held}
-  - {t: ▽, type: trans}
+  - LEFT SHIFT
   - F1
   - F2
   - F3
