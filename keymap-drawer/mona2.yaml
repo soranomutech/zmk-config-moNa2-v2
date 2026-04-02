@@ -51,7 +51,7 @@ layers:
   - F12
   - PG UP
   - HOME
-  - End
+  - END
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - TAB
