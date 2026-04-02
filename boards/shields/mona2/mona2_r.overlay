@@ -72,7 +72,7 @@
     input-type = <INPUT_EV_REL>;
     min-factor = <400>;           // 0.4x at very slow speeds (320 CPI)
     mid-factor = <1000>;          // 1.0x in flat zone (800 CPI)
-    max-factor = <3000>;          // 3.0x at fast speeds (~2400 CPI)
+    max-factor = <2000>;          // 2.0x at fast speeds (~1600 CPI)
     speed-low = <1500>;           // decel → flat boundary
     speed-high = <2000>;          // flat → accel boundary
     speed-max = <6000>;           // max-factor reached here
