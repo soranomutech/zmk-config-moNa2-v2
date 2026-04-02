@@ -41,8 +41,8 @@
             key-positions = <11 12>;
         };
 
-        layer7_toggle {
-            bindings = <&tog 7>;
+        layer7_hold {
+            bindings = <&mo 7>;
             key-positions = <19 20>;
         };
     };
