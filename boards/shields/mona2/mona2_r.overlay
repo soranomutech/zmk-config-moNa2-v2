@@ -75,7 +75,7 @@
     max-factor = <2000>;          // 2.0x at fast speeds (~1600 CPI)
     speed-low = <1500>;           // decel → flat boundary
     speed-high = <2000>;          // flat → accel boundary
-    speed-max = <6000>;           // max-factor reached here
+    speed-max = <4000>;           // max-factor reached here
     deceleration-exponent = <1>;  // linear deceleration curve
     acceleration-exponent = <2>;  // quadratic acceleration curve
     track-remainders;
