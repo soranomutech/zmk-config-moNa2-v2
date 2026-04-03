@@ -78,7 +78,7 @@
     speed-max = <4000>;           // max-factor reached here
     deceleration-exponent = <1>;  // linear deceleration curve
     acceleration-exponent = <1>;  // linear acceleration curve
-    // track-remainders;  // disabled: caused "sliding" feel at low speeds
+    track-remainders;
 };
 
 // Scroll acceleration config (gentle linear curve, 2-stage mode)
