@@ -43,6 +43,6 @@ manifest:
       revision: main
     - name: zmk-input-processor-3stage
       remote: soranomutech
-      revision: ce19dd7
+      revision: 04661c8
   self:
     path: config
