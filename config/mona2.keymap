@@ -24,7 +24,7 @@
 
 &zip_temp_layer {
     require-prior-idle-ms = <200>;
-    excluded-positions = <15 17 18 19 20 29 30 31 41>;
+    excluded-positions = <15 17 19 20 41>;
 };
 
 / {
@@ -155,8 +155,8 @@
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                          &trans  &trans    &trans    &trans      &trans
-&trans  &trans  &trans  &trans  &trans              &trans      &trans  &mkp MB1  &kp UP    &mkp MB2    &lt_mkp 1 MB3
-&trans  &trans  &trans  &trans  &trans  &trans      &trans      &trans  &kp LEFT  &kp DOWN  &kp RIGHT   &trans
+&trans  &trans  &trans  &trans  &trans              &trans      &trans  &mkp MB1  &trans    &mkp MB2    &lt_mkp 1 MB3
+&trans  &trans  &trans  &trans  &trans  &trans      &trans      &trans  &trans    &trans    &trans      &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans      &trans                                  &mo 3
             >;
 
