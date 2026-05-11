@@ -6,7 +6,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 120
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 200
 #define MOUSE 5
 #define SCROLL 6
 
@@ -81,11 +81,14 @@
 
             // overlay側で &msc の trigger-period-ms を 8ms に上書きしているので、
             // tap-ms=10ms の間に「ちょうど1回だけ」スクロールイベントが発火する。
+            // ZMKの内部数式は「移動量 = speed × trigger_period / 1000」(units/tick)で、
+            // floor後にHIDイベント発火するので SCRL_VAL × 8 / 1000 ≥ 1 が必要。
+            // SCRL_VAL=200 で 1.6 → 1ホイールユニット/tick(= OS設定の3行スクロール相当)
             //   t=0    press
-            //   t=8ms  scroll event発火 (SCRL_VAL=120 = 1ホイールクリック分)
+            //   t=8ms  scroll event発火 (move=1.6 → floor=1)
             //   t=10ms release (次のt=16msは来ない)
-            // 1tick=1ホイールクリックの綺麗な対応。linger=10ms、固着は検出間隔<10msの
-            // 物理的に不可能な高速回転でしか起きない。
+            // 上流sayu-hubの 100×16/1000=1.6 と同一の効果。linger=10ms、固着は
+            // 検出間隔<10msの物理的に不可能な高速回転でしか起きない。
             tap-ms = <10>;
         };
 
