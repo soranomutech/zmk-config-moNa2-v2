@@ -79,10 +79,10 @@
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
-            // tap-ms を detent 間隔以上に保つことで press/release の重なり
-            // （= &msc 固着バグの原因）を回避する。60ms は安全圏ぎりぎりだが
-            // 回転停止後の「ぬるっと」を軽減する妥協値
-            tap-ms = <60>;
+            // tap-ms を detent 間隔(30〜60ms)より十分大きく取り、
+            // press/release のキューイング競合(= &msc 固着 / イベント取りこぼし)を回避する。
+            // 60ms は race condition を引いてエンコーダーが遅延/不発になった実績ありで NG
+            tap-ms = <80>;
         };
 
         scroll_right_left: mouse_wheel_right_left {
@@ -90,7 +90,7 @@
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
 
-            tap-ms = <60>;
+            tap-ms = <80>;
         };
 
     };
