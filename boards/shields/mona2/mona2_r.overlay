@@ -8,6 +8,14 @@
     col-offset = <6>;
 };
 
+// &msc (zmk,behavior-input-two-axis) のスクロール発火周期を上書き。
+// デフォルト16msだとエンコーダー用sensor-rotateの tap-ms をそれ以上に
+// 取る必要があり「ぬるっと」が避けられない。8msに下げることで
+// tap-ms=10msでもピッタリ1イベント発火する設計にできる。
+&msc {
+    trigger-period-ms = <8>;
+};
+
 &kscan0 {
         col-gpios
             = <&xiao_d 10 GPIO_ACTIVE_HIGH>
