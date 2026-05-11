@@ -68,14 +68,14 @@
 // Zone A (0-250 cps):      flat at 0.4x (precision low flat)
 // Zone B (250-1300 cps):   ramp 0.4x → 1.2x
 // Zone C (1300-2000 cps):  flat at 1.2x (normal)
-// Zone D (2000-4000 cps):  ramp 1.2x → 1.8x (fast travel)
-// Zone E (>4000 cps):      flat at 1.8x
+// Zone D (2000-4000 cps):  ramp 1.2x → 1.5x (fast travel)
+// Zone E (>4000 cps):      flat at 1.5x
 &pointer_accel_3s {
     status = "okay";
     input-type = <INPUT_EV_REL>;
     min-factor = <400>;           // 0.4x low flat zone
-    mid-factor = <1000>;          // 1.0x mid flat zone
-    max-factor = <1200>;          // 1.2x top speed
+    mid-factor = <1200>;          // 1.2x mid flat zone
+    max-factor = <1500>;          // 1.5x top speed
     speed-flat-low = <250>;       // end of low flat zone
     speed-low = <1300>;           // ramp → mid flat boundary
     speed-high = <2000>;          // mid flat → accel boundary
@@ -93,8 +93,8 @@
         #input-processor-cells = <0>;
         input-type = <INPUT_EV_REL>;
         min-factor = <500>;           // 0.5x at slow speeds
-        mid-factor = <1000>;          // 1.0x in flat zone
-        max-factor = <2000>;          // 2.0x at fast speeds
+        mid-factor = <1500>;          // 1.5x in flat zone
+        max-factor = <2500>;          // 2.5x at fast speeds
         speed-low = <1000>;           // decel -> flat boundary
         speed-high = <2000>;          // flat -> accel boundary
         speed-max = <4000>;           // max accel reached here
@@ -117,7 +117,7 @@
             <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,       //X軸反転
             <&zip_xy_to_scroll_mapper>,                         //スクロールモードに変更
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,   //スクロールのX軸反転
-            <&zip_scroll_scaler 1 20>;                          //スクロール量を1/20倍
+            <&zip_scroll_scaler 1 30>;                          //スクロール量を1/30倍
     };
 
 };

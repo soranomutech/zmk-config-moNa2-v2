@@ -6,7 +6,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 40
 #define MOUSE 5
 #define SCROLL 6
 
@@ -79,10 +79,12 @@
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
-            // tap-ms と SCRL_VAL の両方を上流sayu-hub(20ms / 100)に戻す。
-            // tap-ms=80ms + SCRL_VAL=10 では1tickあたり50単位しか出ず
-            // OS側で「1ホイールクリック=120単位」に達せず単発回転が無反応化した
-            tap-ms = <20>;
+            // tap-ms と SCRL_VAL のバランス調整:
+            //   1tick = tap-ms × SCRL_VAL / HID周期(16ms) = 60 × 40 / 16 ≈ 150単位
+            //   OSのホイールクリック閾値(120単位)を超えて単発回転で確実に反応する。
+            //   tap-ms=60ms は detent間隔(30〜60ms)とほぼ同じで固着リスクは中程度。
+            //   tap-ms=20msだと固着が頻発、tap-ms=80+SCRL_VAL=10では閾値割れで無反応化した。
+            tap-ms = <60>;
         };
 
         scroll_right_left: mouse_wheel_right_left {
@@ -90,7 +92,7 @@
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
 
-            tap-ms = <20>;
+            tap-ms = <60>;
         };
 
     };
