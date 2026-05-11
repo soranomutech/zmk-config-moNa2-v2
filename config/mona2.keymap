@@ -6,7 +6,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 10
 #define MOUSE 5
 #define SCROLL 6
 
@@ -79,10 +79,10 @@
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
 
-            // tap-ms を detent 間隔より長く（100ms）取ることで、
-            // 連続回転中は release が毎tick再スケジュールされ実際には発火せず、
-            // press/release の重なり（= &msc 固着バグの原因）を根本回避する
-            tap-ms = <100>;
+            // tap-ms を detent 間隔以上に保つことで press/release の重なり
+            // （= &msc 固着バグの原因）を回避する。60ms は安全圏ぎりぎりだが
+            // 回転停止後の「ぬるっと」を軽減する妥協値
+            tap-ms = <60>;
         };
 
         scroll_right_left: mouse_wheel_right_left {
@@ -90,7 +90,7 @@
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
 
-            tap-ms = <100>;
+            tap-ms = <60>;
         };
 
     };
